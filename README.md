@@ -6,7 +6,7 @@ Welcome to BSHR loop, a project that aims to automate human search behavior for 
 
 BSHR loop uses Large Language Models (LLMs), a type of deep neural network based on the "transformer" architecture, to perform the following:
 
-1. **Brainstorm Accept:** user queries or information problems of arbitrary size, length, and complexity. The LLM then brainstorms a list of search queries, ensuring a well-rounded search by employing information literacy and counterfactual queries. Subsequent brainstorming loops should be informed by notes and information accumulated over time.
+1. **Brainstorm:** Accept user queries or information problems of arbitrary size, length, and complexity. The LLM then brainstorms a list of search queries, ensuring a well-rounded search by employing information literacy and counterfactual queries. Subsequent brainstorming loops should be informed by notes and information accumulated over time.
 
 2. **Search:** The brainstormed list of questions is used to search an information source, such as a search API, KB database, or KG. The search results are cached locally so that the system knows what it has already seen. This is crucial for the BSHR loop to know when available information has been exhausted. As with brainstorming, the search function should improve over time with each iteration, as there will be more cached information available. 
 
