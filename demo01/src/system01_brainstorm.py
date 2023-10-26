@@ -19,8 +19,6 @@ f"""
 """
     )
     
-    
-    user_query + "# NOTES\n" + notes
     response, tokens = use_chatgpt(system_message, user_message)
 
     print(f"tokens used = {tokens}")

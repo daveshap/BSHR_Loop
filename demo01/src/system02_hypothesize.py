@@ -7,8 +7,12 @@ def hypothesize(user_query: str, notes: str, hypotheses: str):
 f"""
 # USER QUERY
 {user_query}
+
+
 # NOTES
 {notes}
+
+
 # PREVIOUS HYPOTHISES
 {hypotheses}
 """
