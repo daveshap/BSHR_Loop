@@ -21,7 +21,6 @@ def chatbot(conversation, model="gpt-4", temperature=0, max_tokens=2000):
             spinner.start()
             
             response = openai.ChatCompletion.create(model=model, messages=conversation, temperature=temperature, max_tokens=max_tokens)
-            print(response)
             text = response['choices'][0]['message']['content']
 
             spinner.stop()
