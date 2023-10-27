@@ -1,4 +1,3 @@
-
 from system01_brainstorm import brainstorm
 from system02_hypothesize import hypothesize
 from system03_satisfice import satisfice
@@ -24,9 +23,7 @@ def main():
         )
         queries += new_queries
 
-        print(f"{tokens=}")
-        total_tokens += tokens
-        print(f"{total_tokens=}")
+        total_tokens = track_token_usage(total_tokens, tokens)
 
         new_hypothesis, tokens = hypothesize(
             user_query=user_query,
@@ -34,10 +31,7 @@ def main():
             hypotheses=hypotheses_feedback,
         )
 
-
-        print(f"{tokens=}")
-        total_tokens += tokens
-        print(f"{total_tokens=}")
+        total_tokens = track_token_usage(total_tokens, tokens)
 
         satisficed, feedback, tokens = satisfice(
             user_query=user_query,
@@ -46,10 +40,7 @@ def main():
             hypothesis=new_hypothesis,
         )
 
-        print(f"{tokens=}")
-        total_tokens += tokens
-        print(f"{total_tokens=}")
-
+        total_tokens = track_token_usage(total_tokens, tokens)
 
         hypotheses_feedback = (
 f"""
@@ -62,21 +53,24 @@ f"""
 {feedback}
 """
         )
+        print(f"{new_hypothesis=}")
+        print(f"{satisficed=}")
+        print(f"{feedback=}")
 
         if satisficed or max_iterations <= iteration:
-            print(f"{satisficed=}")
             print(f"reached max iterations {max_iterations <= iteration}")
-            print(f"{new_hypothesis}")
             break
         
         notes, tokens = refine(notes)
 
-        print(f"{tokens=}")
-        total_tokens += tokens
-        print(f"{total_tokens=}")
-            
+        total_tokens = track_token_usage(total_tokens, tokens)
         print(f"{iteration=} completed")
 
+def track_token_usage(total_tokens, tokens):
+    print(f"{tokens=}")
+    total_tokens += tokens
+    print(f"{total_tokens=}")
+    return total_tokens
 
 if __name__ == "__main__":
 
