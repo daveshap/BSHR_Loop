@@ -45,6 +45,10 @@ if __name__ == '__main__':
         main_query = input('\n\n\n#########\n\n\nWhat is your query? ')
         if main_query.lower() == 'exit'
             exit(0)
+        
+        # start BSHR loop
         evidence, hypothesis = bshr_loop(main_query)
+        
+        # render answer
         answer = synthesize_main_answer(evidence, hypotheses)  # TODO write this function
         print('\n\n\nANSWER:\n\n\n', answer)
